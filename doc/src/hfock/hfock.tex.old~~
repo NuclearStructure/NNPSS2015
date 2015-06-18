@@ -107,7 +107,7 @@ June 15-26 2015
 
 
 
-\subsection{Why Hartree-Fock? Derivation of Hartree-Fock equations in coordinate space}
+\subsection{Why Hartree-Fock? Derivation of Hartree-Fock equations}
 
 Hartree-Fock (HF) theory is an algorithm for finding an approximative expression for the ground state of a given Hamiltonian. The basic ingredients are
 \begin{itemize}
@@ -427,9 +427,8 @@ are orthogonal.
 
 
 We obtain
-\begin{equation}
-\begin{split}
-  \int \Phi^*\hat{H}_I\Phi d\mathbf{\tau} 
+\begin{align}
+  \int \Phi^*\hat{H}_I\Phi d\mathbf{\tau}& 
   = \frac{1}{2}\sum_{\mu=1}^A\sum_{\nu=1}^A
     &\left[ \int \psi_{\mu}^*(x_i)\psi_{\nu}^*(x_j)\hat{v}(r_{ij})\psi_{\mu}(x_i)\psi_{\nu}(x_j)
     dx_idx_j \right.\\
@@ -438,8 +437,7 @@ We obtain
   \hat{v}(r_{ij})\psi_{\nu}(x_i)\psi_{\mu}(x_j)
   dx_idx_j
   \right]. \label{H2Expectation}
-\end{split}
-\end{equation}
+\end{align}
 The first term is the so-called direct term. It is frequently also called the  Hartree term, 
 while the second is due to the Pauli principle and is called
 the exchange term or just the Fock term.
@@ -512,7 +510,7 @@ For general single-particle states we employ the labels $pqrs\dots$.
 
 
 
-In Eq.~(\ref{FunctionalEPhi}), restated here
+The equation for the energy with one Slater determinant as ansatz for the ground state is 
 \[
   E[\Phi] 
   = \sum_{\mu=1}^A \langle \mu | h | \mu \rangle +
@@ -597,9 +595,10 @@ we can rewrite the new equations as
 \begin{equation}
 \sum_{\gamma}h_{\alpha\beta}^{HF}C_{i\beta}=\epsilon_i^{HF}C_{i\alpha}. \label{eq:newhf}
 \end{equation}
-The latter is nothing but a standard eigenvalue problem. Compared with Eq.~(\ref{eq:hartreefockcoordinatespace}),
-we see that we do not need to compute any integrals in an iterative procedure for solving the equations.
-It suffices to tabulate the matrix elements $\langle \alpha | h | \beta \rangle$ and $\langle \alpha\gamma|\hat{v}|\beta\delta\rangle_{AS}$ once and for all. Successive iterations require thus only a look-up in tables over one-body and two-body matrix elements. These details will be discussed below when we solve the Hartree-Fock equations numerical. 
+The latter is nothing but a standard eigenvalue problem. 
+
+We see that we do not need to compute any integrals in an iterative procedure for solving the equations.
+It suffices to tabulate the matrix elements $\langle \alpha | h | \beta \rangle$ and $\langle \alpha\gamma|\hat{v}|\beta\delta\rangle_{AS}$ once and for all. Successive iterations require thus only a look-up in tables over one-body and two-body matrix elements.
 
 
 
@@ -671,11 +670,7 @@ This process is continued till for example
 where $\lambda$ is a user prefixed quantity ($\lambda \sim 10^{-8}$ or smaller) and $p$ runs over all calculated single-particle
 energies and $m$ is the number of single-particle states.
 
-\begin{itemize}
-\item TODO: add code with Hartree-Fock for nuclear system
-\end{itemize}
 
-\noindent
 \subsection{Analysis of Hartree-Fock equations and Koopman's theorem}
 
 We can rewrite the ground state energy by adding and subtracting $\hat{u}^{HF}(x_i)$ 
