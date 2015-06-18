@@ -1,0 +1,62 @@
+TITLE: Lectures on Nuclear Structure Theory and Reactions
+AUTHOR: "Morten Hjorth-Jensen":"http://computationalphysics.no/" at Department of Physics, University of Oslo, Norway & Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University, USA
+DATE: June  15-26, 2015, National Nuclear Physics Summer School, Lake Tahoe, California
+
+<%
+pub_url = 'http://nuclearstructure.github.io/NNPSS2015/doc/pub'
+published = ['intro', 'secondquant', 'hfock', 'fci', 'mbpt', 'cc', 'vmc', 'adv',]
+chapters = {
+ 'intro': 'Introduction and motivation',
+ 'secondquant': 'Reminder on second quantization, background material',
+ 'hfock': 'Hartree-Fock theory',
+ 'fci': 'Full configuration interaction theory',
+ 'mbpt': 'Many-body perturbation theory',
+ 'cc': 'Coupled cluster theory',
+ 'vmc': 'Basics of Monte Carlo methods',
+ 'adv': 'The regular seminar',
+}
+%>
+
+
+
+
+
+<%def name="text_types(name)">
+
+ * LaTeX PDF for printing/viewing:
+   * "Standard one-page format": "${pub_url}/${name}/pdf/${name}-print.pdf"
+ * HTML:
+   * "Solarized style": "${pub_url}/${name}/html/${name}.html"
+   * "Bootstrap style": "${pub_url}/${name}/html/${name}-bs.html"
+ * iPython notebook (useful for running codes interactively):
+   * "ipynb file": "${pub_url}/${name}/ipynb/${name}.ipynb"
+
+</%def>
+
+<%def name="slide_types(name)">
+</%def>
+
+The teaching material is produced in various formats for printing and on-screen reading.
+If you are not familiar with second quantization, we recommend that you go through the additional material included here. 
+!split
+The PDF files are based on LaTeX and have seldom technical
+failures that cannot be easily corrected.
+The HTML-based files, called ``HTML'' and ``ipynb'' below, apply MathJax
+for rendering LaTeX formulas and sometimes this technology gives rise
+to unexpected failures (e.g.,
+incorrect rendering in a web page despite correct LaTeX syntax in the
+formula). Consult the corresponding PDF
+files if you find missing or incorrectly rendered
+formulas in HTML or ipython notebook files.
+
+
+======= Material for the Many-body theory course =======
+
+% for ch in published:
+===== ${chapters[ch]} =====
+
+${text_types(ch)}
+
+% endfor
+
+
