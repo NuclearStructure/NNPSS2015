@@ -93,7 +93,7 @@ Nuclear Shell Model
 % ----------------- end author(s) -------------------------
 
 \begin{center} % date
-July 6-24 2015
+June 15-26 2015
 \end{center}
 
 \vspace{1cm}
@@ -107,7 +107,7 @@ July 6-24 2015
 
 
 
-\subsection*{Slater determinants as basis states, Repetition}
+\subsection*{Slater determinants as basis states}
 
 The simplest possible choice for many-body wavefunctions are \textbf{product} wavefunctions.
 That is
@@ -124,11 +124,10 @@ integrals factorize.
 
 
 The price we pay is the lack of correlations, which we must build up by using many, many product 
-wavefunctions. (Thus we have a trade-off: compact representation of correlations but 
-difficult integrals versus easy integrals but many states required.) 
+wavefunctions.
 
 
-Because we have fermions, we are required to have antisymmetric wavefunctions, e.g.
+Because we have fermions, we are required to have antisymmetric wavefunctions, that is
 \[
 \Psi(x_1, x_2, x_3, \ldots, x_A) = - \Psi(x_2, x_1, x_3, \ldots, x_A)
 \]
@@ -145,7 +144,7 @@ etc. This is accomplished formally by using the determinantal formalism
 \end{array}
 \right |
 \]
-Product wavefunction + antisymmetry = Slater determinant. 
+Product wavefunction + antisymmetry (Pauli principle) = Slater determinant. 
 
 
 
@@ -163,7 +162,7 @@ Product wavefunction + antisymmetry = Slater determinant.
 \]
 Properties of the determinant (interchange of any two rows or 
 any two columns yields a change in sign; thus no two rows and no 
-two columns can be the same) lead to the Pauli principle:
+two columns can be the same) lead to the following consequence of the Pauli principle:
 
 \begin{itemize}
 \item No two particles can be at the same place (two columns the same); and
@@ -252,7 +251,7 @@ and a general $NpNh$ state as
 |\Phi_{ijk\dots}^{abc\dots}\rangle = \hat{a}_{a}^{\dagger}\hat{a}_{b}^{\dagger}\hat{a}_{c}^{\dagger}\dots\hat{a}_k\hat{a}_j\hat{a}_i|\Phi_0\rangle.
 \]
 
-
+We use letters $ijkl\dots$ for states below the Fermi level and $abcd\dots$ for states above the Fermi level. A general single-particle state is given by letters $pqrs\dots$.
 
 We can then expand our exact state function for the ground state 
 as
@@ -299,7 +298,6 @@ Normally
 E= \langle \Psi_0 | \hat{H} |\Phi_0 \rangle= \sum_{PP'HH'}C_H^{*P}\langle \Phi_H^P | \hat{H} |\Phi_{H'}^{P'} \rangle C_{H'}^{P'},
 \]
 is solved by diagonalization setting up the Hamiltonian matrix defined by the basis of all possible Slater determinants. A diagonalization
-% to do: add text about Rayleigh-Ritz
 is equivalent to finding the variational minimum   of 
 \[
  \langle \Psi_0 | \hat{H} |\Phi_0 \rangle-\lambda \langle \Psi_0 |\Phi_0 \rangle,
@@ -372,7 +370,7 @@ E-E_0 =\Delta E=\sum_{ai}\langle \Phi_0 | \hat{H}|\Phi_{i}^{a} \rangle C_{i}^{a}
 where the energy $E_0$ is the reference energy and $\Delta E$ defines the so-called correlation energy.
 The single-particle basis functions  could be the results of a Hartree-Fock calculation or just the eigenstates of the non-interacting part of the Hamiltonian. 
 
-In our chapter on Hartree-Fock calculations, 
+In our notes on Hartree-Fock calculations, 
 we have already computed the matrix $\langle \Phi_0 | \hat{H}|\Phi_{i}^{a}\rangle $ and $\langle \Phi_0 | \hat{H}|\Phi_{ij}^{ab}\rangle$.  If we are using a Hartree-Fock basis, then the matrix elements
 $\langle \Phi_0 | \hat{H}|\Phi_{i}^{a}\rangle $ and we are left with a correlation energy given by
 \[
@@ -457,508 +455,51 @@ and
 \sum_{cdeklm}\langle \Phi_{ij}^{ab} | \hat{H} -E|\Phi_{klm}^{cde} \rangle C_{klm}^{cde}+\sum_{cdefklmn}\langle \Phi_{ij}^{ab} | \hat{H} -E|\Phi_{klmn}^{cdef} \rangle C_{klmn}^{cdef}=0?
 \]
 
-
-\begin{itemize}
-\item TO DO: finish this discussion and discuss truncations like CISD, prepare the ground for MBPT and CC theories
-\end{itemize}
-
-\noindent
-\subsection*{Building a many-body basis}
-
-\begin{itemize}
-\item TO DO: make figures of various approaches to the basis:
-\begin{enumerate}
-
- \item Standard shell-model basis in one or two major shells
-
- \item Full CI in a given basis and no truncations
-
- \item CISD and CISDT (prepare for link to CC theory)
-
- \item No-core shell model and truncation in excitation energy
-\end{enumerate}
-
-\noindent
-\end{itemize}
-
-\noindent
-Let us now sketch how  construct a working code that constructs the 
-many-body Hamiltonian matrix in a basis of Slater determinants and allows us to find the low-lying eigenenergies. 
-This is referred to as the configuration-interaction method or shell-model diagonalization 
-(or the interacting shell model). 
-
-The first step in such codes is to construct the many-body basis.  
-
-While the formalism is independent of the choice of basis, the \textbf{effectiveness} of a calculation 
-will certainly be basis dependent. 
-
-Furthermore there are common conventions useful to know.
-
-
-
-
-
-First, the single-particle basis has angular momentum as a good quantum number.  You can 
-imagine the single-particle wavefunctions being generated by a one-body Hamiltonian, 
-for example a harmonic oscillator.  Modifications include harmonic oscillator plus 
-spin-orbit splitting, or self-consistent mean-field potentials, or the Woods-Saxon potential which mocks 
-up the self-consistent mean-field. 
-
-
-For nuclei, the harmonic oscillator, modified by spin-orbit splitting, provides a useful language 
-for describing single-particle states.
-
-
-Each single-particle state is labeled by the following quantum numbers: 
-
-\begin{itemize}
-\item Orbital angular momentum $l$
-
-\item Intrinsic spin $s$ = 1/2 for protons and neutrons
-
-\item Angular momentum $j = l \pm 1/2$
-
-\item $z$-component $j_z$ (or $m$)
-
-\item Some labeling of the radial wavefunction, typically $n$ the number of nodes in  the radial wavefunction, but in the case of harmonic oscillator one can also use the principal quantum number $N$, where the harmonic oscillator energy is $(N+3/2)\hbar \omega$. 
-\end{itemize}
-
-\noindent
-In this format one labels states by $n(l)_j$, with $(l)$ replaced by a letter:
-$s$ for $l=0$, $p$ for $l=1$, $d$ for $l=2$, $f$ for $l=3$, and thenceforth alphabetical.
-
-
- In practice the single-particle space has to be severely truncated.  This truncation is 
-typically based upon the single-particle energies, which is the effective energy 
-from a mean-field potential. 
-
-Sometimes we freeze the core and only consider a valence space. For example, one 
-may assume a frozen ${}^{4}\mbox{He}$ core, with two protons and two neutrons in the $0s_{1/2}$ 
-shell, and then only allow active particles in the $0p_{1/2}$ and $0p_{3/2}$ orbits. 
-
-
-
-
-Another example is a frozen ${}^{16}\mbox{O}$ core, with eight protons and eight neutrons filling the 
-$0s_{1/2}$,  $0p_{1/2}$ and $0p_{3/2}$ orbits, with valence particles in the 
-$0d_{5/2}, 1s_{1/2}$ and $0d_{3/2}$ orbits.
-
-
-Sometimes we refer to nuclei by the valence space where their last nucleons go.  
-So, for example, we call ${}^{12}\mbox{C}$ a $p$-shell nucleus, while ${}^{26}\mbox{Al}$ is an 
-$sd$-shell nucleus and ${}^{56}\mbox{Fe}$ is a $pf$-shell nucleus.
-
-
-
-
-
-There are different kinds of truncations.
-
-\begin{itemize}
-\item For example, one can start with `filled' orbits (almost always the lowest), and then  allow one, two, three... particles excited out of those filled orbits. These are called  1p-1h, 2p-2h, 3p-3h excitations. 
-
-\item Alternately, one can state a maximal orbit and allow all possible configurations with  particles occupying states up to that maximum. This is called \emph{full configuration}.
-
-\item Finally, for particular use in nuclear physics, there is the \emph{energy} truncation, also  called the $N\hbar\Omega$ or $N_{max}$ truncation. 
-\end{itemize}
-
-\noindent
- Here one works in a harmonic oscillator basis, with each major oscillator shell assigned 
-a principal quantum number $N=0,1,2,3,...$. 
-
-The $N\hbar\Omega$ or $N_{max}$ truncation: Any configuration is given an noninteracting energy, which is the sum 
-of the single-particle harmonic oscillator energies. (Thus this ignores 
-spin-orbit splitting.)
-
-
-
-
-Excited state are labeled relative to the lowest configuration by the 
-number of harmonic oscillator quanta.
-
-This truncation is useful because: if one includes \emph{all} configuration up to 
-some $N_{max}$, and has a translationally invariant interaction, then the intrinsic 
-motion and the center-of-mass motion factor. In other words, we can know exactly 
-the center-of-mass wavefunction. 
-
-
-
-
-
-
-In almost all cases, the many-body Hamiltonian is rotationally invariant. This means 
-it commutes with the operators $\hat{J}^2, \hat{J}_z$ and so eigenstates will have 
-good $J,M$. Furthermore, the eigenenergies do not depend upon the orientation $M$. 
-
-
-Therefore we can choose to construct a many-body basis which has fixed $M$; this is 
-called an $M$-scheme basis. 
-
-
-Alternately, one can construct a many-body basis which has fixed $J$, or a $J$-scheme 
-basis. 
-
-The Hamiltonian matrix will have smaller dimensions (a factor of 10 or more)
- in the $J$-scheme than in the $M$-scheme. 
-On the other hand, as we'll show in the next slide, the $M$-scheme is very easy to 
-construct with Slater determinants, while the $J$-scheme basis states, and thus the 
-matrix elements, are more complicated, almost always being linear combinations of 
-$M$-scheme states. $J$-scheme bases are important and useful, but we'll focus on the 
-simpler $M$-scheme.
-
-
-
-The quantum number $m$ is additive (because the underlying group is Abelian): 
-if a Slater determinant $\hat{a}_i^\dagger \hat{a}^\dagger_j \hat{a}^\dagger_k \ldots | 0 \rangle$ 
-is built from single-particle states all with good $m$, then the total 
-\[
-M = m_i + m_j + m_k + \ldots
-\]
-This is \emph{not} true of $J$, because the angular momentum group SU(2) is not Abelian.
-
-The upshot is that 
-\begin{itemize}
-\item It is easy to construct a Slater determinant with good total $M$;
-
-\item It is trivial to calculate $M$ for each Slater determinant;
-
-\item So it is easy to construct an $M$-scheme basis with fixed total $M$.
-\end{itemize}
-
-\noindent
-Note that the individual $M$-scheme basis states will \emph{not}, in general, 
-have good total $J$. 
-Because the Hamiltonian is rotationally invariant, however, the eigenstates will 
-have good $J$. (The situation is muddied when one has states of different $J$ that are 
-nonetheless degenerate.) 
-
-
-
-
-Example: two $j=1/2$ orbits
+Suppose, as an example, that we have six fermions below the Fermi level.
+This means that we can make at most $6p-6h$ excitations. If we have an infinity of single particle states above the Fermi level, we will obviously have an infinity of say $2p-2h$ excitations. Each such way to configure the particles is called a \textbf{configuration}. We will always have to truncate in the basis of single-particle states.
+This gives us a finite number of possible Slater determinants. Our Hamiltonian matrix would then look like (where each block can have a large dimensionalities):
 
 
 \begin{quote}
-\begin{tabular}{ccccc}
+\begin{tabular}{cccccccc}
 \hline
-\multicolumn{1}{c}{ Index } & \multicolumn{1}{c}{ $n$ } & \multicolumn{1}{c}{ $l$ } & \multicolumn{1}{c}{ $j$ } & \multicolumn{1}{c}{ $m_j$ } \\
+\multicolumn{1}{c}{  } & \multicolumn{1}{c}{ 0p-0h } & \multicolumn{1}{c}{ 1p-1h } & \multicolumn{1}{c}{ 2p-2h } & \multicolumn{1}{c}{ 3p-3h } & \multicolumn{1}{c}{ 4p-4h } & \multicolumn{1}{c}{ 5p-5h } & \multicolumn{1}{c}{ 6p-6h } \\
 \hline
-1     & 0   & 0   & 1/2 & -1/2  \\
-2     & 0   & 0   & 1/2 & 1/2   \\
-3     & 1   & 0   & 1/2 & -1/2  \\
-4     & 1   & 0   & 1/2 & 1/2   \\
+0p-0h & x     & x     & x     & 0     & 0     & 0     & 0     \\
+1p-1h & x     & x     & x     & x     & 0     & 0     & 0     \\
+2p-2h & x     & x     & x     & x     & x     & 0     & 0     \\
+3p-3h & 0     & x     & x     & x     & x     & x     & 0     \\
+4p-4h & 0     & 0     & x     & x     & x     & x     & x     \\
+5p-5h & 0     & 0     & 0     & x     & x     & x     & x     \\
+6p-6h & 0     & 0     & 0     & 0     & x     & x     & x     \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
-Note: the order is arbitrary.
-There are $\left ( \begin{array}{c} 4 \\ 2 \end{array} \right) = 6$ two-particle states, 
-which we list with the total $M$:
+with a two-body force. Why are there non-zero blocks of elements? 
+If we use a Hartree-Fock basis, this corresponds to a particular unitary transformation where matrix elements of the type $\langle 0p-0h \vert \hat{H} \vert 1p-1h\rangle =0$ and our Hamiltonian matrix becomes 
 
 
 \begin{quote}
-\begin{tabular}{cc}
+\begin{tabular}{cccccccc}
 \hline
-\multicolumn{1}{c}{ Occupied } & \multicolumn{1}{c}{ $M$ } \\
+\multicolumn{1}{c}{  } & \multicolumn{1}{c}{ 0p-0h } & \multicolumn{1}{c}{ 1p-1h } & \multicolumn{1}{c}{ 2p-2h } & \multicolumn{1}{c}{ 3p-3h } & \multicolumn{1}{c}{ 4p-4h } & \multicolumn{1}{c}{ 5p-5h } & \multicolumn{1}{c}{ 6p-6h } \\
 \hline
-1,2      & 0   \\
-1,3      & -1  \\
-1,4      & 0   \\
-2,3      & 0   \\
-2,4      & 1   \\
-3,4      & 0   \\
-\hline
-\end{tabular}
-\end{quote}
-
-\noindent
-and 1 each with $M = \pm 1$.
-
-
-
-
-Example: consider using only single particle states from the $0d_{5/2}$ space. 
-They have the following quantum numbers
-
-
-\begin{quote}
-\begin{tabular}{ccccc}
-\hline
-\multicolumn{1}{c}{ Index } & \multicolumn{1}{c}{ $n$ } & \multicolumn{1}{c}{ $l$ } & \multicolumn{1}{c}{ $j$ } & \multicolumn{1}{c}{ $m_j$ } \\
-\hline
-1     & 0   & 2   & 5/2 & -5/2  \\
-2     & 0   & 2   & 5/2 & -3/2  \\
-3     & 0   & 2   & 5/2 & -1/2  \\
-4     & 0   & 2   & 5/2 & 1/2   \\
-5     & 0   & 2   & 5/2 & 3/2   \\
-6     & 0   & 2   & 5/2 & 5/2   \\
-\hline
-\end{tabular}
-\end{quote}
-
-\noindent
-There are $\left ( \begin{array}{c} 6 \\ 2 \end{array} \right) = 15$ two-particle states, 
-which we list with the total $M$:
-
-
-\begin{quote}
-\begin{tabular}{cccccc}
-\hline
-\multicolumn{1}{c}{ Occupied } & \multicolumn{1}{c}{ $M$ } & \multicolumn{1}{c}{ Occupied } & \multicolumn{1}{c}{ $M$ } & \multicolumn{1}{c}{ Occupied } & \multicolumn{1}{c}{ $M$ } \\
-\hline
-1,2      & -4  & 2,3      & -2  & 3,5      & 1   \\
-1,3      & -3  & 2,4      & -1  & 3,6      & 2   \\
-1,4      & -2  & 2,5      & 0   & 4,5      & 2   \\
-1,5      & -1  & 2,6      & 1   & 4,6      & 3   \\
-1,6      & 0   & 3,4      & 0   & 5,6      & 4   \\
+0p-0h & $\tilde{x}$ & 0           & $\tilde{x}$ & 0           & 0           & 0           & 0           \\
+1p-1h & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & 0           & 0           & 0           \\
+2p-2h & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & 0           & 0           \\
+3p-3h & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & 0           \\
+4p-4h & 0           & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ \\
+5p-5h & 0           & 0           & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ \\
+6p-6h & 0           & 0           & 0           & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ \\
 \hline
 \end{tabular}
 \end{quote}
 
 \noindent
 
-
-
-
-\subsection*{Example case: pairing Hamiltonian, the warm-up project}
-
-
-We consider a space with $2\Omega$ single-particle states, with each 
-state labeled by 
-$k = 1, 2, 3, \Omega$ and $m = \pm 1/2$. The convention is that 
-the state with $k>0$ has $m = + 1/2$ while $-k$ has $m = -1/2$.
-
-
-The Hamiltonian we consider is 
-\[
-\hat{H} = -G \hat{P}_+ \hat{P}_-,
-\]
-where
-\[
-\hat{P}_+ = \sum_{k > 0} \hat{a}^\dagger_k \hat{a}^\dagger_{-{k}}.
-\]
-and $\hat{P}_- = ( \hat{P}_+)^\dagger$.
-
-This problem can be solved using what is called the quasi-spin formalism to obtain the 
-exact results. Thereafter we will try again using the explicit Slater determinant formalism.
-
-
-
-
-One can show (and this is part of the project) that
-\[
-\left [ \hat{P}_+, \hat{P}_- \right ] = \sum_{k> 0} \left( \hat{a}^\dagger_k \hat{a}_k 
-+ \hat{a}^\dagger_{-{k}} \hat{a}_{-{k}} - 1 \right) = \hat{N} - \Omega.
-\]
-Now define 
-\[
-\hat{P}_z = \frac{1}{2} ( \hat{N} -\Omega).
-\]
-Finally you can show
-\[
-\left [ \hat{P}_z , \hat{P}_\pm \right ] = \pm \hat{P}_\pm.
-\]
-This means the operators $\hat{P}_\pm, \hat{P}_z$ form a so-called  $SU(2)$ algebra, and we can 
-use all our insights about angular momentum, even though there is no actual 
-angular momentum involved
-
-So we rewrite the Hamiltonian to make this explicit:
-\[
-\hat{H} = -G \hat{P}_+ \hat{P}_- 
-= -G \left( \hat{P}^2 - \hat{P}_z^2 + \hat{P}_z\right)
-\]
-
-
-
-
-Because of the SU(2) algebra, we know that the eigenvalues of 
-$\hat{P}^2$ must be of the form $p(p+1)$, with $p$ either integer or half-integer, and the eigenvalues of $\hat{P}_z$ 
-are $m_p$ with $p \geq | m_p|$, with $m_p$ also integer or half-integer. 
-
-
-But because $\hat{P}_z = (1/2)(\hat{N}-\Omega)$, we know that for $N$ particles 
-the value $m_p = (N-\Omega)/2$. Furthermore, the values of $m_p$ range from 
-$-\Omega/2$ (for $N=0$) to $+\Omega/2$ (for $N=2\Omega$, with all states filled). 
-
-We deduce the maximal $p = \Omega/2$ and for a given $n$ the 
-values range of $p$ range from $|N-\Omega|/2$ to $\Omega/2$ in steps of 1 
-(for an even number of particles) 
-
-
-Following Racah we introduce the notation
-$p = (\Omega - v)/2$
-where $v = 0, 2, 4,..., \Omega - |N-\Omega|$ 
-With this it is easy to deduce that the eigenvalues of the pairing Hamiltonian are
-\[
--G(N-v)(2\Omega +2-N-v)/4
-\]
-This also works for $N$ odd, with $v= 1,3,5, \dots$.
-
-
-
-Let's take a specific example: $\Omega = 3$ so there are 6 single-particle states, 
-and $N = 3$, with $v= 1,3$. Therefore there are two distinct eigenvalues, 
-\[
-E = -2G, 0
-\]
-Now let's work this out explicitly. The single particle degrees of freedom are defined as
-
-
-\begin{quote}
-\begin{tabular}{ccc}
-\hline
-\multicolumn{1}{c}{ Index } & \multicolumn{1}{c}{ $k$ } & \multicolumn{1}{c}{ $m$ } \\
-\hline
-1     & 1   & -1/2 \\
-2     & -1  & 1/2  \\
-3     & 2   & -1/2 \\
-4     & -2  & 1/2  \\
-5     & 3   & -1/2 \\
-6     & -3  & 1/2  \\
-\hline
-\end{tabular}
-\end{quote}
-
-\noindent
- There are  $\left( \begin{array}{c}6 \\ 3 \end{array} \right) = 20$ three-particle states, but there 
-are 9 states with $M = +1/2$, namely
-$| 1,2,3 \rangle, |1,2,5\rangle, | 1,4,6 \rangle, | 2,3,4 \rangle, |2,3,6 \rangle, | 2,4,5 \rangle, | 2, 5, 6 \rangle, |3,4,6 \rangle, | 4,5,6 \rangle$.
-
-
-
-
-
-
-In this basis, the operator 
-\[
-\hat{P}_+
-= \hat{a}^\dagger_1 \hat{a}^\dagger_2 + \hat{a}^\dagger_3 \hat{a}^\dagger_4 +
-\hat{a}^\dagger_5 \hat{a}^\dagger_6 
-\]
-From this we can determine that 
-\[
-\hat{P}_- | 1, 4, 6 \rangle = \hat{P}_- | 2, 3, 6 \rangle
-= \hat{P}_- | 2, 4, 5 \rangle = 0
-\]
-so those states all have eigenvalue 0.
-
-
-
-Now for further example, 
-\[
-\hat{P}_- | 1,2,3 \rangle = | 3 \rangle
-\]
-so
-\[
-\hat{P}_+ \hat{P}_- | 1,2,3\rangle = | 1,2,3\rangle+ | 3,4,3\rangle + | 5,6,3\rangle
-\]
-The second term vanishes because state 3 is occupied twice, and reordering the last 
-term we
-get
-\[
-\hat{P}_+ \hat{P}_- | 1,2,3\rangle = | 1,2,3\rangle+ |3, 5,6\rangle
-\]
-without picking up a phase.
-
-
-
-Continuing in this fashion, with the previous ordering of the many-body states
-(  $| 1,2,3 \rangle, |1,2,5\rangle, | 1,4,6 \rangle, | 2,3,4 \rangle, |2,3,6 \rangle, | 2,4,5 \rangle, | 2, 5, 6 \rangle, |3,4,6 \rangle, | 4,5,6 \rangle$) the 
-Hamiltonian matrix of this system is 
-\[
-H = -G\left( 
-\begin{array}{ccccccccc}
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1  \\
-0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0  \\
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\
-0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0  \\
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\
-0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0  \\
-0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\
-0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0  \\
-1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1  
-\end{array} \right )
-\] 
-This is useful for our project.  One can by hand confirm 
-that there are 3 eigenvalues $-2G$ and 6 with value zero.
-
-
-
-
-Another example
-Using the $(1/2)^4$ single-particle space, resulting in eight single-particle states
-
-
-\begin{quote}
-\begin{tabular}{ccccc}
-\hline
-\multicolumn{1}{c}{ Index } & \multicolumn{1}{c}{ $n$ } & \multicolumn{1}{c}{ $l$ } & \multicolumn{1}{c}{ $s$ } & \multicolumn{1}{c}{ $m_s$ } \\
-\hline
-1     & 0   & 0   & 1/2 & -1/2  \\
-2     & 0   & 0   & 1/2 & 1/2   \\
-3     & 1   & 0   & 1/2 & -1/2  \\
-4     & 1   & 0   & 1/2 & 1/2   \\
-5     & 2   & 0   & 1/2 & -1/2  \\
-6     & 2   & 0   & 1/2 & 1/2   \\
-7     & 3   & 0   & 1/2 & -1/2  \\
-8     & 3   & 0   & 1/2 & 1/2   \\
-\hline
-\end{tabular}
-\end{quote}
-
-\noindent
-and then taking only 4-particle, $M=0$ states that have no `broken pairs', there are six basis Slater 
-determinants:
-
-\begin{itemize}
-\item $|           1,           2 ,          3         ,       4  \rangle , $
-
-\item $|            1      ,     2        ,        5         ,       6 \rangle , $
-
-\item $|            1         ,       2     ,           7         ,       8  \rangle , $
-
-\item $|            3        ,        4      ,          5          ,      6  \rangle , $
-
-\item $|            3        ,        4      ,          7         ,       8  \rangle , $
-
-\item $|            5        ,        6     ,           7     ,           8  \rangle $
-\end{itemize}
-
-\noindent
-Now we take the following Hamiltonian
-\[
-\hat{H} = \sum_n n \delta \hat{N}_n  - G \hat{P}^\dagger \hat{P}
-\]
-where 
-\[
-\hat{N}_n = \hat{a}^\dagger_{n, m=+1/2} \hat{a}_{n, m=+1/2} +
-\hat{a}^\dagger_{n, m=-1/2} \hat{a}_{n, m=-1/2}
-\]
-and
-\[
-\hat{P}^\dagger = \sum_{n} \hat{a}^\dagger_{n, m=+1/2} \hat{a}^\dagger_{n, m=-1/2} 
-\]
-We can write down the $ 6 \times 6$  Hamiltonian in the basis from the prior slide:
-\[
-H = \left ( 
-\begin{array}{cccccc}
-2\delta -2G & -G & -G & -G & -G & 0 \\
- -G & 4\delta -2G & -G & -G & -0 & -G \\
--G & -G & 6\delta -2G & 0 & -G & -G \\
- -G & -G & 0 & 6\delta-2G & -G & -G \\
- -G & 0 & -G & -G & 8\delta-2G & -G \\
-0 & -G & -G & -G & -G & 10\delta -2G 
-\end{array} \right )
-\]
-(You should check by hand that this is correct.) 
-
-For $\delta = 0$ we have the closed form solution of  the g.s. energy given by $-6G$.
-
-
-
-
+What happens if we have a three-body interaction and a Hartree-Fock basis? 
 
 % ------------------- end of main content ---------------
 
