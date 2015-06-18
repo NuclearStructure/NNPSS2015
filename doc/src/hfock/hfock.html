@@ -39,7 +39,7 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 2,
- 'sections': [(' Why Hartree-Fock? Derivation of Hartree-Fock equations in coordinate space ',
+ 'sections': [(' Why Hartree-Fock? Derivation of Hartree-Fock equations  ',
                2,
                None,
                '___sec0'),
@@ -110,7 +110,7 @@ MathJax.Hub.Config({
 <h2>Table of contents</h2>
 
 <p>
-<a href="#___sec0"> Why Hartree-Fock? Derivation of Hartree-Fock equations in coordinate space </a><br>
+<a href="#___sec0"> Why Hartree-Fock? Derivation of Hartree-Fock equations  </a><br>
 <a href="#___sec1"> Variational Calculus and Lagrangian Multipliers  </a><br>
 <a href="#___sec2"> Definitions and notations </a><br>
 <a href="#___sec3"> Hartree-Fock by varying the coefficients of a wave function expansion </a><br>
@@ -118,7 +118,7 @@ MathJax.Hub.Config({
 <a href="#___sec5"> Analysis of Hartree-Fock equations and Koopman's theorem </a><br>
 </p>
 
-<h2 id="___sec0">Why Hartree-Fock? Derivation of Hartree-Fock equations in coordinate space </h2>
+<h2 id="___sec0">Why Hartree-Fock? Derivation of Hartree-Fock equations  </h2>
 
 <p>
 Hartree-Fock (HF) theory is an algorithm for finding an approximative expression for the ground state of a given Hamiltonian. The basic ingredients are
@@ -482,9 +482,8 @@ are orthogonal.
 <p>
 We obtain
 $$
-\begin{equation}
-\begin{split}
-  \int \Phi^*\hat{H}_I\Phi d\mathbf{\tau} 
+\begin{align}
+  \int \Phi^*\hat{H}_I\Phi d\mathbf{\tau}& 
   = \frac{1}{2}\sum_{\mu=1}^A\sum_{\nu=1}^A
     &\left[ \int \psi_{\mu}^*(x_i)\psi_{\nu}^*(x_j)\hat{v}(r_{ij})\psi_{\mu}(x_i)\psi_{\nu}(x_j)
     dx_idx_j \right.\\
@@ -493,8 +492,7 @@ $$
   \hat{v}(r_{ij})\psi_{\nu}(x_i)\psi_{\mu}(x_j)
   dx_idx_j
   \right]. \tag{9}
-\end{split}
-\end{equation}
+\end{align}
 $$
 
 The first term is the so-called direct term. It is frequently also called the  Hartree term, 
@@ -561,7 +559,7 @@ In our discussions hereafter we will use our definitions of single-particle stat
 For general single-particle states we employ the labels \( pqrs\dots \).
 
 <p>
-In Eq.&nbsp;\eqref{FunctionalEPhi}, restated here
+The equation for the energy with one Slater determinant as ansatz for the ground state is 
 $$
   E[\Phi] 
   = \sum_{\mu=1}^A \langle \mu | h | \mu \rangle +
@@ -644,9 +642,11 @@ $$
 \end{equation}
 $$
 
-The latter is nothing but a standard eigenvalue problem. Compared with Eq.&nbsp;\eqref{eq:hartreefockcoordinatespace},
-we see that we do not need to compute any integrals in an iterative procedure for solving the equations.
-It suffices to tabulate the matrix elements \( \langle \alpha | h | \beta \rangle \) and \( \langle \alpha\gamma|\hat{v}|\beta\delta\rangle_{AS} \) once and for all. Successive iterations require thus only a look-up in tables over one-body and two-body matrix elements. These details will be discussed below when we solve the Hartree-Fock equations numerical.
+The latter is nothing but a standard eigenvalue problem.
+
+<p>
+We see that we do not need to compute any integrals in an iterative procedure for solving the equations.
+It suffices to tabulate the matrix elements \( \langle \alpha | h | \beta \rangle \) and \( \langle \alpha\gamma|\hat{v}|\beta\delta\rangle_{AS} \) once and for all. Successive iterations require thus only a look-up in tables over one-body and two-body matrix elements.
 
 <h2 id="___sec4">Hartree-Fock algorithm </h2>
 
@@ -713,10 +713,6 @@ $$
 
 where \( \lambda \) is a user prefixed quantity (\( \lambda \sim 10^{-8} \) or smaller) and \( p \) runs over all calculated single-particle
 energies and \( m \) is the number of single-particle states.
-
-<ul>
-<li> TODO: add code with Hartree-Fock for nuclear system</li>
-</ul>
 
 <h2 id="___sec5">Analysis of Hartree-Fock equations and Koopman's theorem </h2>
 
