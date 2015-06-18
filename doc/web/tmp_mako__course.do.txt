@@ -1,6 +1,6 @@
 TITLE: Lectures on Nuclear Structure Theory and Reactions
 AUTHOR: "Morten Hjorth-Jensen":"http://computationalphysics.no/" at Department of Physics, University of Oslo, Norway & Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University, USA
-DATE: June  15-26, 2015, National Nuclear Physics Summer School, Lake Tahoe, California
+DATE: June  15-26 2015, "National Nuclear Physics Summer School":"https://nnpss2015.llnl.gov/", Lake Tahoe, California
 
 
 
