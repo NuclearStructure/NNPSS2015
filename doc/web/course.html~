@@ -264,9 +264,21 @@ formulas in HTML or ipython notebook files.
  <li> LaTeX PDF for printing/viewing:</li>
 
 <ul>
-   <li> <a href="http://nuclearstructure.github.io/NNPSS2015/doc/pub/adv/pdf/adv-print.pdf" target="_self">Standard slide format</a></li>
+   <li> <a href="http://nuclearstructure.github.io/NNPSS2015/doc/pub/adv/pdf/adv-print.pdf" target="_self">Standard one-page format</a></li>
 </ul>
 
+ <li> HTML:</li>
+
+<ul>
+   <li> <a href="http://nuclearstructure.github.io/NNPSS2015/doc/pub/adv/html/adv.html" target="_self">Solarized style</a></li>
+   <li> <a href="http://nuclearstructure.github.io/NNPSS2015/doc/pub/adv/html/adv-bs.html" target="_self">Bootstrap style</a></li>
+</ul>
+
+ <li> iPython notebook (useful for running codes interactively):</li>
+
+<ul>
+   <li> <a href="http://nuclearstructure.github.io/NNPSS2015/doc/pub/adv/ipynb/adv.ipynb" target="_self">ipynb file</a></li>
+</ul>
 
 </ul>
 
