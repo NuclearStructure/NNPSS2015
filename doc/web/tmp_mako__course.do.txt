@@ -26,7 +26,7 @@ files if you find missing or incorrectly rendered
 formulas in HTML or ipython notebook files.
 
 
-======= Material for the Many-body theory course =======
+======= Material for lectures, with additional background as well =======
 
 ===== Introduction and motivation =====
 
