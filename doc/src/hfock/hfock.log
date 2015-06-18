@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  17 JUN 2015 22:26
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  17 JUN 2015 22:31
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -540,26 +540,27 @@ LaTeX Warning: Reference `H1Expectation' on page 6 undefined on input line 388.
 
 
 [6]
-Overfull \hbox (110.58559pt too wide) in paragraph at lines 440--440
-[] 
+Overfull \hbox (156.28459pt too wide) detected at line 437
+[] [] \OT1/lmr/m/n/10 ^^H[][]^^H\OML/lmm/m/it/10 d^^\ \OT1/lmr/m/n/10 = [] [] [
+] [] \OML/lmm/m/it/10 :
  []
 
 [7]
 
-LaTeX Warning: Reference `eq:newbasis' on page 8 undefined on input line 521.
+LaTeX Warning: Reference `eq:newbasis' on page 8 undefined on input line 518.
 
 
-LaTeX Warning: Reference `eq:newbasis' on page 8 undefined on input line 527.
+LaTeX Warning: Reference `eq:newbasis' on page 8 undefined on input line 524.
 
 
-LaTeX Warning: Reference `eq:newbasis' on page 8 undefined on input line 533.
+LaTeX Warning: Reference `eq:newbasis' on page 8 undefined on input line 530.
 
 
 LaTeX Warning: Reference `FunctionalEPhi2' on page 8 undefined on input line 53
-3.
+0.
 
 [8] [9]
-Overfull \hbox (27.84044pt too wide) detected at line 680
+Overfull \hbox (27.84044pt too wide) detected at line 677
 \OML/lmm/m/it/10 E[] \OT1/lmr/m/n/10 = \OMS/lmsy/m/n/10 h\OT1/lmr/m/n/10 ^^H[]\
 OMS/lmsy/m/n/10 j[]j\OT1/lmr/m/n/10 ^^H[]\OMS/lmsy/m/n/10 i \OT1/lmr/m/n/10 = [
 ]\OMS/lmsy/m/n/10 h\OML/lmm/m/it/10 i\OMS/lmsy/m/n/10 j[] \OT1/lmr/m/n/10 + []\
@@ -570,10 +571,10 @@ it/10 i\OMS/lmsy/m/n/10 i\OML/lmm/m/it/10 ;
 
 [10]
 
-LaTeX Warning: Reference `eq:newbasis' on page 11 undefined on input line 705.
+LaTeX Warning: Reference `eq:newbasis' on page 11 undefined on input line 702.
 
 
-Overfull \hbox (8.73358pt too wide) detected at line 721
+Overfull \hbox (8.73358pt too wide) detected at line 718
 \OML/lmm/m/it/10 E\OT1/lmr/m/n/10 [^^H[](\OML/lmm/m/it/10 N\OT1/lmr/m/n/10 )] \
 OMS/lmsy/m/n/10 ^^@ \OML/lmm/m/it/10 E\OT1/lmr/m/n/10 [^^H[](\OML/lmm/m/it/10 N
  \OMS/lmsy/m/n/10 ^^@ \OT1/lmr/m/n/10 1)] = \OMS/lmsy/m/n/10 h\OML/lmm/m/it/10 
@@ -585,10 +586,10 @@ t/10 kj\OMS/lmsy/m/n/10 i[]\OML/lmm/m/it/10 ;
 
 [11]
 
-LaTeX Warning: Reference `eq:newbasis' on page 12 undefined on input line 764.
+LaTeX Warning: Reference `eq:newbasis' on page 12 undefined on input line 761.
 
 [12]
-Overfull \hbox (5.48367pt too wide) detected at line 781
+Overfull \hbox (5.48367pt too wide) detected at line 778
 \OML/lmm/m/it/10 E\OT1/lmr/m/n/10 [^^H[](\OML/lmm/m/it/10 A\OT1/lmr/m/n/10 )] \
 OMS/lmsy/m/n/10 ^^@ \OML/lmm/m/it/10 E\OT1/lmr/m/n/10 [^^H[](\OML/lmm/m/it/10 A
  \OMS/lmsy/m/n/10 ^^@ \OT1/lmr/m/n/10 1)] = \OMS/lmsy/m/n/10 h\OML/lmm/m/it/10 
@@ -600,11 +601,11 @@ t/10 kj\OMS/lmsy/m/n/10 i[]\OML/lmm/m/it/10 ;
 
 [13]
 No file hfock.ind.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 880.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 877.
 [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 880.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 877.
  (./hfock.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 880.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 877.
 
 
  *File List*
@@ -689,7 +690,7 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 880.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 877.
 Package rerunfilecheck Info: File `hfock.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -698,16 +699,16 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 880.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 877.
  ) 
 Here is how much of TeX's memory you used:
- 8157 strings out of 493488
- 123247 string characters out of 3141326
+ 8156 strings out of 493488
+ 123234 string characters out of 3141326
  255696 words of memory out of 3000000
  11202 multiletter control sequences out of 15000+200000
  55896 words of font info for 95 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 41i,10n,35p,881b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,8n,35p,881b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
 texlive/2012/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
 12/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2012/texmf-d
@@ -722,10 +723,10 @@ ts/type1/public/lm/lmr10.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/pu
 blic/lm/lmr5.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/lm/lmr7
 .pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr
 /local/texlive/2012/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on hfock.pdf (14 pages, 217464 bytes).
+Output written on hfock.pdf (14 pages, 217383 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
+ 150 PDF objects out of 1000 (max. 8388607)
+ 121 compressed objects within 2 object streams
+ 36 named destinations out of 1000 (max. 500000)
  13313 words of extra memory for PDF output out of 14400 (max. 10000000)
 
