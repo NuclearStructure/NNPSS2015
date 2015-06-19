@@ -44,7 +44,15 @@ div { text-align: justify; text-justify: inter-word; }
               (' Summarizing FCI and bringing in approximative methods ',
                2,
                None,
-               '___sec4')]}
+               '___sec4'),
+              ('  Many-body perturbation theory, in short ',
+               3,
+               None,
+               '___sec5'),
+              (' A quick tour of Coupled Cluster theory ',
+               3,
+               None,
+               '___sec6')]}
 end of tocinfo -->
 
 <body>
@@ -531,6 +539,271 @@ many-body perturbation theory.
 <h2 id="___sec4">Summarizing FCI and bringing in approximative methods </h2>
 
 <p>
+If we can diagonalize large matrices, FCI is the method of choice since:
+
+<ul>
+<li> It gives all eigenvalues, ground state and excited states</li>
+<li> The eigenvectors are obtained directly from the coefficients \( C_H^P \) which result from the diagonalization</li>
+<li> We can compute easily expectation values of other operators, as well as transition probabilities</li>
+<li> Correlations are easy to understand in terms of contributions to a given operator beyond the Hartree-Fock contribution. This is the standard approach in</li> 
+</ul>
+
+many-body theory.
+
+<p>
+The correlation energy is defined as, with a two-body Hamiltonian,  
+$$
+\Delta E=\sum_{ai}\langle i| \hat{f}|a \rangle C_{i}^{a}+
+\sum_{abij}\langle ij | \hat{v}| ab \rangle C_{ij}^{ab}.
+$$
+
+<p>
+The coefficients \( C \) result from the solution of the eigenvalue problem. 
+The energy of say the ground state is then
+$$
+E=E_{ref}+\Delta E,
+$$
+
+where the so-called reference energy is the energy we obtain from a Hartree-Fock calculation, that is
+$$
+E_{ref}=\langle \Phi_0 \vert \hat{H} \vert \Phi_0 \rangle.
+$$
+
+<p>
+However, as we have seen, even for a small case like the four first major shells and a nucleus like oxygen-16, the dimensionality becomes quickly intractable. If we wish to include single-particle states that reflect weakly bound systems, we need a much larger single-particle basis. We need thus approximative methods that sum specific correlations to infinite order.
+
+<p>
+Popular methods are
+
+<ul>
+<li> Many-body perturbation theory (in essence a Taylor expansion)</li>
+<li> Coupled cluster theory (coupled non-linear equations)</li>
+<li> Green's function approaches (matrix inversion)</li>
+<li> Similarity group transformation methods (coupled ordinary differential equations</li>
+</ul>
+
+All these methods start normally with a Hartree-Fock basis as the calculational basis.
+
+<h3 id="___sec5">Many-body perturbation theory, in short </h3>
+
+<p>
+If we are looking at the ground state energy only, we define an effective Hilbert space which comprises only this state. This space is called the <b>model spac</b>.
+
+<p>
+We can express the correlation energy as a perturbative expression in terms
+of \( \hat{H}_I \) 
+$$
+\Delta E=\sum_{i=1}^{\infty}\Delta E^{(i)}.
+$$
+
+We get the following expression for \( \Delta E^{(i)} \)
+$$
+\Delta E^{(1)}=\langle \Phi_0\vert \hat{H}_I\vert \Phi_0\rangle,
+$$
+
+which is just the contribution to first order in perturbation theory,
+$$
+\Delta E^{(2)}=\langle\Phi_0\vert \hat{H}_I\frac{\hat{Q}}{W_0-\hat{H}_0}\hat{H}_I\vert \Phi_0\rangle, 
+$$
+
+which is the contribution to second order.
+
+$$
+\Delta E^{(3)}=\langle \Phi_0\vert \hat{H}_I\frac{\hat{Q}}{W_0-\hat{H}_0}\hat{H}_I\frac{\hat{Q}}{W_0-\hat{H}_0}\hat{H}_I\Phi_0\rangle-
+\langle\Phi_0\vert \hat{H}_I\frac{\hat{Q}}{W_0-\hat{H}_0}\langle \Phi_0\vert \hat{H}_I\vert \Phi_0\rangle\frac{\hat{Q}}{W_0-\hat{H}_0}\hat{H}_I\vert \Phi_0\rangle,
+$$
+
+being the third-order contribution.
+
+<p>
+In the shell-model we showed that we could rewrite the exact state function for say the ground state, as a linear expansion in terms of all possible Slater determinants. That is, we 
+define the ansatz for the ground state as 
+$$
+|\Phi_0\rangle = \left(\prod_{i\le F}\hat{a}_{i}^{\dagger}\right)|0\rangle,
+$$
+
+where the index \( i \) defines different single-particle states up to the Fermi level. We have assumed that we have \( N \) fermions. 
+A given one-particle-one-hole (\( 1p1h \)) state can be written as
+$$
+|\Phi_i^a\rangle = \hat{a}_{a}^{\dagger}\hat{a}_i|\Phi_0\rangle,
+$$
+
+while a \( 2p2h \) state can be written as
+$$
+|\Phi_{ij}^{ab}\rangle = \hat{a}_{a}^{\dagger}\hat{a}_{b}^{\dagger}\hat{a}_j\hat{a}_i|\Phi_0\rangle,
+$$
+
+and a general \( ApAh \) state as 
+$$
+|\Phi_{ijk\dots}^{abc\dots}\rangle = \hat{a}_{a}^{\dagger}\hat{a}_{b}^{\dagger}\hat{a}_{c}^{\dagger}\dots\hat{a}_k\hat{a}_j\hat{a}_i|\Phi_0\rangle.
+$$
+
+<p>
+We use letters \( ijkl\dots \) for states below the Fermi level and \( abcd\dots \) for states above the Fermi level. A general single-particle state is given by letters \( pqrs\dots \).
+
+<p>
+We can then expand our exact state function for the ground state 
+as
+$$
+|\Psi_0\rangle=C_0|\Phi_0\rangle+\sum_{ai}C_i^a|\Phi_i^a\rangle+\sum_{abij}C_{ij}^{ab}|\Phi_{ij}^{ab}\rangle+\dots
+=(C_0+\hat{C})|\Phi_0\rangle,
+$$
+
+where we have introduced the so-called correlation operator 
+$$
+\hat{C}=\sum_{ai}C_i^a\hat{a}_{a}^{\dagger}\hat{a}_i  +\sum_{abij}C_{ij}^{ab}\hat{a}_{a}^{\dagger}\hat{a}_{b}^{\dagger}\hat{a}_j\hat{a}_i+\dots
+$$
+
+Since the normalization of \( \Psi_0 \) is at our disposal and since \( C_0 \) is by hypothesis non-zero, we may arbitrarily set \( C_0=1 \) with 
+corresponding proportional changes in all other coefficients. Using this so-called intermediate normalization we have
+$$
+\langle \Psi_0 | \Phi_0 \rangle = \langle \Phi_0 | \Phi_0 \rangle = 1, 
+$$
+
+resulting in 
+$$
+|\Psi_0\rangle=(1+\hat{C})|\Phi_0\rangle.
+$$
+
+<p>
+In a shell-model calculation, the unknown coefficients in \( \hat{C} \) are the 
+eigenvectors which result from the diagonalization of the Hamiltonian matrix.
+
+<p>
+How can we use perturbation theory to determine the same coefficients? Let us study the contributions to second order in the interaction, namely
+$$
+\Delta E^{(2)}=\langle\Phi_0\vert \hat{H}_I\frac{\hat{Q}}{W_0-\hat{H}_0}\hat{H}_I\vert \Phi_0\rangle.
+$$
+
+<p>
+The intermediate states given by \( \hat{Q} \) can at most be of a \( 2p-2h \) nature if we have a two-body Hamiltonian. This means that second order in the perturbation theory can have \( 1p-1h \) and \( 2p-2h \) at most as intermediate states. When we diagonalize, these contributions are included to infinite order. This means that higher-orders in perturbation theory bring in more complicated correlations.
+
+<p>
+If we limit the attention to a Hartree-Fock basis, then we have that
+\( \langle\Phi_0\vert \hat{H}_I \vert 2p-2h\rangle \) is the only contribution and the contribution to the energy reduces to
+$$
+\Delta E^{(2)}=\frac{1}{4}\sum_{abij}\langle ij\vert \hat{v}\vert ab\rangle \frac{\langle ab\vert \hat{v}\vert ij\rangle}{\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b}.
+$$
+
+<p>
+If we compare this to the correlation energy obtained from full configuration interaction theory with a Hartree-Fock basis, we found that
+$$
+E-E_0 =\Delta E=
+\sum_{abij}\langle ij | \hat{v}| ab \rangle C_{ij}^{ab},
+$$
+
+where the energy \( E_0 \) is the reference energy and \( \Delta E \) defines the so-called correlation energy.
+
+<p>
+We see that if we set
+$$
+C_{ij}^{ab} =\frac{1}{4}\frac{\langle ab \vert \hat{v} \vert ij \rangle}{\epsilon_i+\epsilon_j-\epsilon_a-\epsilon_b},
+$$
+
+we have a perfect agreement between FCI and MBPT. However, FCI includes such \( 2p-2h \) correlations to infinite order. In order to make a meaningful comparison we would at least need to sum such correlations to infinite order in perturbation theory.
+
+<p>
+Summing up, we can see that
+
+<ul>
+<li> MBPT introduces order-by-order specific correlations and we make comparisons with exact calculations like FCI</li>
+<li> At every order, we can calculate all contributions since they are well-known and either tabulated or calculated on the fly.</li>
+<li> MBPT is a non-variational theory and there is no guarantee that higher orders will improve the convergence.</li> 
+<li> However, since FCI calculations are limited by the size of the Hamiltonian matrices to diagonalize (today's most efficient codes can attach dimensionalities of ten billion basis states, MBPT can function as an approximative method which gives a straightforward (but tedious) calculation recipe.</li> 
+<li> MBPT has been widely used to compute effective interactions for the nuclear shell-model.</li>
+<li> But there are better methods which sum to infinite order important correlations. Coupled cluster theory is one of these methods.</li> 
+</ul>
+
+<h3 id="___sec6">A quick tour of Coupled Cluster theory </h3>
+
+<p>
+The ansatz for the wavefunction (ground state) is given by
+$$
+\begin{equation*}
+   \vert \Psi\rangle = \vert \Psi_{CC}\rangle = e^{\hat{T}} \vert \Phi_0\rangle =  
+  \left( \sum_{n=1}^{A} \frac{1}{n!} \hat{T}^n \right) \vert \Phi_0\rangle,
+\end{equation*}
+$$
+
+where \( A \) represents the maximum number of particle-hole excitations and \( \hat{T} \) is the cluster operator defined as
+$$
+\begin{align*}
+            \hat{T} &= \hat{T}_1 + \hat{T}_2 + \ldots + \hat{T}_A \\
+            \hat{T}_n &= \left(\frac{1}{n!}\right)^2 
+                \sum_{\substack{
+                        i_1,i_2,\ldots i_n \\
+                        a_1,a_2,\ldots a_n}}
+                t_{i_1i_2\ldots i_n}^{a_1a_2\ldots a_n} a_{a_1}^\dagger a_{a_2}^\dagger \ldots a_{a_n}^\dagger a_{i_n} \ldots a_{i_2} a_{i_1}.
+        \end{align*}
+$$
+
+    The energy is given by
+$$
+    \begin{equation*}
+        E_{\mathrm{CC}} = \langle\Phi_0\vert  \overline{H}\vert \Phi_0\rangle,
+    \end{equation*}
+$$
+
+    where \( \overline{H} \) is a similarity transformed Hamiltonian
+$$
+    \begin{align*}
+        \overline{H}&= e^{-\hat{T}} \hat{H}_N e^{\hat{T}} \\
+        \hat{H}_N &= \hat{H} - \langle\Phi_0\vert \hat{H} \vert \Phi_0\rangle.
+    \end{align*}
+$$
+
+<p>
+    The coupled cluster energy is a function of the unknown cluster amplitudes \( t_{i_1i_2\ldots i_n}^{a_1a_2\ldots a_n} \),
+given by the solutions to the amplitude equations
+$$
+    \begin{equation*}
+        0 = \langle\Phi_{i_1 \ldots i_n}^{a_1 \ldots a_n}\vert \overline{H}\vert \Phi_0\rangle.
+    \end{equation*}
+$$
+
+The similarity transformed   Hamiltonian  \( \overline{H} \) is expanded using the Baker-Campbell-Hausdorff expression,
+$$
+    \begin{align*}
+        \overline{H}&= \hat{H}_N + \left[ \hat{H}_N, \hat{T} \right] + 
+            \frac{1}{2} \left[\left[ \hat{H}_N, \hat{T} \right], \hat{T}\right] + \ldots \\
+            & \quad \frac{1}{n!} \left[ \ldots \left[ \hat{H}_N, \hat{T} \right], \ldots \hat{T} \right] +++
+    \end{align*}
+$$
+
+and simplified using the connected cluster theorem
+$$
+    \begin{equation*}
+        \overline{H}= \hat{H}_N + \left( \hat{H}_N \hat{T}\right)_c + \frac{1}{2} \left( \hat{H}_N \hat{T}^2\right)_c
+            + \dots + \frac{1}{n!} \left( \hat{H}_N \hat{T}^n\right)_c +++
+    \end{equation*}
+$$
+
+<p>
+A much used approximation is to  truncate the cluster operator \( \hat{T} \) at the \( n=2 \) level. This defines the so-called approximation to the Coupled Cluster wavefunction.
+
+<p>
+The coupled cluster wavefunction is now given by
+$$
+\begin{equation*}
+            \vert \Psi_{CC}\rangle = e^{\hat{T}_1 + \hat{T}_2} \vert \Phi_0\rangle
+\end{equation*}
+$$
+
+where 
+$$
+        \begin{align*}
+            \hat{T}_1 &= 
+            \sum_{ia}
+                t_{i}^{a} a_{a}^\dagger a_i \\
+            \hat{T}_2 &= \frac{1}{4} 
+            \sum_{ijab}
+                t_{ij}^{ab} a_{a}^\dagger a_{b}^\dagger a_{j} a_{i}.
+        \end{align*}
+$$
+
+<p>
+The amplutudes \( t \) play a role similar to the coefficients \( C \) in the shell-model calculations. They are obtained by solving a set of non-linear equations
+similar to those discussed above in connection withe FCI discussion.
 
 <p>
 <!-- begin bottom navigation -->
