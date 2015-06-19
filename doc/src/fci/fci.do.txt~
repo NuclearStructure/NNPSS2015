@@ -643,3 +643,80 @@ Summing up, we can see that
 
 === A quick tour of Coupled Cluster theory ===
 
+The ansatz for the wavefunction (ground state) is given by
+!bt
+\begin{equation*}
+   \vert \Psi\rangle = \vert \Psi_{CC}\rangle = e^{\hat{T}} \vert \Phi_0\rangle =  
+  \left( \sum_{n=1}^{A} \frac{1}{n!} \hat{T}^n \right) \vert \Phi_0\rangle,
+\end{equation*}
+!et
+where $A$ represents the maximum number of particle-hole excitations and $\hat{T}$ is the cluster operator defined as
+!bt
+\begin{align*}
+            \hat{T} &= \hat{T}_1 + \hat{T}_2 + \ldots + \hat{T}_A \\
+            \hat{T}_n &= \left(\frac{1}{n!}\right)^2 
+                \sum_{\substack{
+                        i_1,i_2,\ldots i_n \\
+                        a_1,a_2,\ldots a_n}}
+                t_{i_1i_2\ldots i_n}^{a_1a_2\ldots a_n} a_{a_1}^\dagger a_{a_2}^\dagger \ldots a_{a_n}^\dagger a_{i_n} \ldots a_{i_2} a_{i_1}.
+        \end{align*}
+!et
+    The energy is given by
+!bt
+    \begin{equation*}
+        E_{\mathrm{CC}} = \langle\Phi_0\vert  \overline{H}\vert \Phi_0\rangle,
+    \end{equation*}
+!et
+    where $\overline{H}$ is a similarity transformed Hamiltonian
+!bt
+    \begin{align*}
+        \overline{H}&= e^{-\hat{T}} \hat{H}_N e^{\hat{T}} \\
+        \hat{H}_N &= \hat{H} - \langle\Phi_0\vert \hat{H} \vert \Phi_0\rangle.
+    \end{align*}
+!et
+
+    The coupled cluster energy is a function of the unknown cluster amplitudes $t_{i_1i_2\ldots i_n}^{a_1a_2\ldots a_n}$,
+given by the solutions to the amplitude equations
+!bt
+    \begin{equation*}
+        0 = \langle\Phi_{i_1 \ldots i_n}^{a_1 \ldots a_n}\vert \overline{H}\vert \Phi_0\rangle.
+    \end{equation*}
+!et
+The similarity transformed   Hamiltonian  $\overline{H}$ is expanded using the Baker-Campbell-Hausdorff expression,
+!bt
+    \begin{align*}
+        \overline{H}&= \hat{H}_N + \left[ \hat{H}_N, \hat{T} \right] + 
+            \frac{1}{2} \left[\left[ \hat{H}_N, \hat{T} \right], \hat{T}\right] + \ldots \\
+            & \quad \frac{1}{n!} \left[ \ldots \left[ \hat{H}_N, \hat{T} \right], \ldots \hat{T} \right] +++
+    \end{align*}
+!et
+and simplified using the connected cluster theorem
+!bt
+    \begin{equation*}
+        \overline{H}= \hat{H}_N + \left( \hat{H}_N \hat{T}\right)_c + \frac{1}{2} \left( \hat{H}_N \hat{T}^2\right)_c
+            + \dots + \frac{1}{n!} \left( \hat{H}_N \hat{T}^n\right)_c +++
+    \end{equation*}
+!et
+
+A much used approximation is to  truncate the cluster operator $\hat{T}$ at the $n=2$ level. This defines the so-called approximation to the Coupled Cluster wavefunction.
+    
+The coupled cluster wavefunction is now given by
+!bt
+\begin{equation*}
+            \vert \Psi_{CC}\rangle = e^{\hat{T}_1 + \hat{T}_2} \vert \Phi_0\rangle
+\end{equation*}
+!et
+where 
+!bt
+        \begin{align*}
+            \hat{T}_1 &= 
+            \sum_{ia}
+                t_{i}^{a} a_{a}^\dagger a_i \\
+            \hat{T}_2 &= \frac{1}{4} 
+            \sum_{ijab}
+                t_{ij}^{ab} a_{a}^\dagger a_{b}^\dagger a_{j} a_{i}.
+        \end{align*}
+!et
+
+The amplutudes $t$ play a role similar to the coefficients $C$ in the shell-model calculations. They are obtained by solving a set of non-linear equations
+similar to those discussed above in connection withe FCI discussion.
