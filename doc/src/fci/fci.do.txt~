@@ -468,8 +468,7 @@ If we can diagonalize large matrices, FCI is the method of choice since:
 * It gives all eigenvalues, ground state and excited states
 * The eigenvectors are obtained directly from the coefficients $C_H^P$ which result from the diagonalization
 * We can compute easily expectation values of other operators, as well as transition probabilities
-* Correlations are easy to understand in terms of contributions to a given operator beyond the Hartree-Fock contribution. This is the standard approach in 
-many-body theory. 
+* Correlations are easy to understand in terms of contributions to a given operator beyond the Hartree-Fock contribution. This is the standard approach in  many-body theory. 
 
 The correlation energy is defined as, with a two-body Hamiltonian,  
 !bt
@@ -505,7 +504,7 @@ All these methods start normally with a Hartree-Fock basis as the calculational 
 
 ===  Many-body perturbation theory, in short ===
 
-If we are looking at the ground state energy only, we define an effective Hilbert space which comprises only this state. This space is called the _model spac_.
+If we are looking at the ground state energy only, we define an effective Hilbert space which comprises only this state. This space is called the _model space_.
 
 We can express the correlation energy as a perturbative expression in terms
 of $\hat{H}_I$ 
@@ -618,8 +617,7 @@ $\langle\Phi_0\vert \hat{H}_I \vert 2p-2h\rangle$ is the only contribution and t
 If we compare this to the correlation energy obtained from full configuration interaction theory with a Hartree-Fock basis, we found that
 !bt
 \[
-E-E_0 =\Delta E=
-\sum_{abij}\langle ij | \hat{v}| ab \rangle C_{ij}^{ab},
+E-E_0 =\Delta E=\sum_{abij}\langle ij | \hat{v}| ab \rangle C_{ij}^{ab},
 \]
 !et
 where the energy $E_0$ is the reference energy and $\Delta E$ defines the so-called correlation energy.
@@ -687,14 +685,14 @@ The similarity transformed   Hamiltonian  $\overline{H}$ is expanded using the B
     \begin{align*}
         \overline{H}&= \hat{H}_N + \left[ \hat{H}_N, \hat{T} \right] + 
             \frac{1}{2} \left[\left[ \hat{H}_N, \hat{T} \right], \hat{T}\right] + \ldots \\
-            & \quad \frac{1}{n!} \left[ \ldots \left[ \hat{H}_N, \hat{T} \right], \ldots \hat{T} \right] +++
+            & \quad \frac{1}{n!} \left[ \ldots \left[ \hat{H}_N, \hat{T} \right], \ldots \hat{T} \right] +\dots
     \end{align*}
 !et
 and simplified using the connected cluster theorem
 !bt
     \begin{equation*}
         \overline{H}= \hat{H}_N + \left( \hat{H}_N \hat{T}\right)_c + \frac{1}{2} \left( \hat{H}_N \hat{T}^2\right)_c
-            + \dots + \frac{1}{n!} \left( \hat{H}_N \hat{T}^n\right)_c +++
+            + \dots + \frac{1}{n!} \left( \hat{H}_N \hat{T}^n\right)_c +\dots
     \end{equation*}
 !et
 
@@ -720,3 +718,29 @@ where
 
 The amplutudes $t$ play a role similar to the coefficients $C$ in the shell-model calculations. They are obtained by solving a set of non-linear equations
 similar to those discussed above in connection withe FCI discussion.
+
+In our FCI discussion the correlation energy is defined as, with a two-body Hamiltonian,  
+!bt
+\[
+\Delta E=\sum_{ai}\langle i| \hat{f}|a \rangle C_{i}^{a}+
+\sum_{abij}\langle ij | \hat{v}| ab \rangle C_{ij}^{ab}.
+\]
+!et
+
+In Coupled cluster theory it becomes (irrespective of level of truncation of $T$)
+!bt
+\[
+\Delta E=\sum_{ai}\langle i| \hat{f}|a \rangle t_{i}^{a}+
+\sum_{abij}\langle ij | \hat{v}| ab \rangle t_{ij}^{ab}.
+\]
+!et
+
+Coupled cluster theory has several interesting computational features and is the method of choice in quantum chemistry. There are several interesting features:
+* With a truncation like CCSD or CCSDT, we can include to infinite order correlations like $2p-2h$.
+* We can include a large basis of single-particle states, not possible in standard FCI calculations
+
+However, Coupled Cluster theory is
+* non-variational
+* if we want to find properties of excited states, additional calculations via for example equation of motion methods are needed
+* if correlations are strong, a single-reference ansatz may not be the best starting point
+* we cannot quantify properly the error we make when truncations are made in the cluster operator

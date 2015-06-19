@@ -723,6 +723,28 @@ where
 The amplutudes $t$ play a role similar to the coefficients $C$ in the shell-model calculations. They are obtained by solving a set of non-linear equations
 similar to those discussed above in connection withe FCI discussion.
 
+If we truncate our equations at the CCSD level, it corresponds to performing a transformation of the Hamiltonian matrix of the following type for a six particle problem (with a two-body Hamiltonian):
+
+
+\begin{quote}
+\begin{tabular}{cccccccc}
+\hline
+\multicolumn{1}{c}{  } & \multicolumn{1}{c}{ $0p-0h$ } & \multicolumn{1}{c}{ $1p-1h$ } & \multicolumn{1}{c}{ $2p-2h$ } & \multicolumn{1}{c}{ $3p-3h$ } & \multicolumn{1}{c}{ $4p-4h$ } & \multicolumn{1}{c}{ $5p-5h$ } & \multicolumn{1}{c}{ $6p-6h$ } \\
+\hline
+$0p-0h$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & 0           & 0           & 0           & 0           \\
+$1p-1h$ & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & 0           & 0           & 0           \\
+$2p-2h$ & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & 0           & 0           \\
+$3p-3h$ & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & 0           \\
+$4p-4h$ & 0           & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ \\
+$5p-5h$ & 0           & 0           & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ \\
+$6p-6h$ & 0           & 0           & 0           & 0           & $\tilde{x}$ & $\tilde{x}$ & $\tilde{x}$ \\
+\hline
+\end{tabular}
+\end{quote}
+
+\noindent
+
+
 In our FCI discussion the correlation energy is defined as, with a two-body Hamiltonian,  
 \[
 \Delta E=\sum_{ai}\langle i| \hat{f}|a \rangle C_{i}^{a}+
