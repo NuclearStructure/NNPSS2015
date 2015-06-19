@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  19 JUN 2015 07:02
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  19 JUN 2015 07:08
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -594,12 +594,17 @@ j[]j\OT1/lmr/m/n/10 (-20) 2\OML/lmm/m/it/10 p \OMS/lmsy/m/n/10 ^^@
  []
 
 [11] [12]
-No file fci.ind.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 764.
+Overfull \hbox (65.11981pt too wide) in paragraph at lines 730--743
+[][] 
+ []
+
 [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 764.
+No file fci.ind.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 786.
+[14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 786.
  (./fci.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 764.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 786.
 
 
  *File List*
@@ -684,7 +689,7 @@ gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
   omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 764.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 786.
 Package rerunfilecheck Info: File `fci.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -693,11 +698,11 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 764.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 786.
  ) 
 Here is how much of TeX's memory you used:
- 8126 strings out of 493488
- 122795 string characters out of 3141326
+ 8127 strings out of 493488
+ 122802 string characters out of 3141326
  264694 words of memory out of 3000000
  11187 multiletter control sequences out of 15000+200000
  51432 words of font info for 93 fonts, out of 3000000 for 9000
@@ -719,10 +724,10 @@ blic/lm/lmr5.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/public/lm/lmr7
 /local/texlive/2012/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/tex
 live/2012/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2012/t
 exmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on fci.pdf (13 pages, 223033 bytes).
+Output written on fci.pdf (14 pages, 223865 bytes).
 PDF statistics:
- 138 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
+ 142 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
  13825 words of extra memory for PDF output out of 14400 (max. 10000000)
 

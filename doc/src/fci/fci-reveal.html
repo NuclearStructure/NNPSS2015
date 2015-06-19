@@ -992,6 +992,24 @@ The amplutudes \( t \) play a role similar to the coefficients \( C \) in the sh
 similar to those discussed above in connection withe FCI discussion.
 
 <p>
+If we truncate our equations at the CCSD level, it corresponds to performing a transformation of the Hamiltonian matrix of the following type for a six particle problem (with a two-body Hamiltonian):
+
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">           </th> <td align="center">  \( 0p-0h \)  </td> <td align="center">  \( 1p-1h \)  </td> <td align="center">  \( 2p-2h \)  </td> <td align="center">  \( 3p-3h \)  </td> <td align="center">  \( 4p-4h \)  </td> <td align="center">  \( 5p-5h \)  </td> <td align="center">  \( 6p-6h \)  </td> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   \( 0p-0h \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   0                  </td> <td align="center">   0                  </td> <td align="center">   0                  </td> <td align="center">   0                  </td> </tr>
+<tr><td align="center">   \( 1p-1h \)    </td> <td align="center">   0                  </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   0                  </td> <td align="center">   0                  </td> <td align="center">   0                  </td> </tr>
+<tr><td align="center">   \( 2p-2h \)    </td> <td align="center">   0                  </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   0                  </td> <td align="center">   0                  </td> </tr>
+<tr><td align="center">   \( 3p-3h \)    </td> <td align="center">   0                  </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   0                  </td> </tr>
+<tr><td align="center">   \( 4p-4h \)    </td> <td align="center">   0                  </td> <td align="center">   0                  </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> </tr>
+<tr><td align="center">   \( 5p-5h \)    </td> <td align="center">   0                  </td> <td align="center">   0                  </td> <td align="center">   0                  </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> </tr>
+<tr><td align="center">   \( 6p-6h \)    </td> <td align="center">   0                  </td> <td align="center">   0                  </td> <td align="center">   0                  </td> <td align="center">   0                  </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> <td align="center">   \( \tilde{x} \)    </td> </tr>
+</tbody>
+</table>
+<p>
 In our FCI discussion the correlation energy is defined as, with a two-body Hamiltonian,
 
 <p>&nbsp;<br>
